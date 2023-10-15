@@ -47,8 +47,14 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         else:
-            print("Instance Found!")
-            
+            objects_dict = models.storage.all()
+            instance_key = "{}.{}".format(args[0], args[1])
+            instance = objects_dict.get(instance_key)
+            if instance:
+                print(instance)
+            else:
+                print("Instance Found!")
+    
 
 
 if __name__ == '__main__':
